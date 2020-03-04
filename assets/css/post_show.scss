@@ -1,0 +1,38 @@
+.container-fluid {
+  margin-top: 4rem;
+  padding: 2rem;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.25rem;
+  }
+}
+
+.row {
+  padding: 1rem;
+  border-radius: 1.25rem;
+
+  .post-container {
+    position: relative;
+
+    .option-container {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+
+      a {
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        border-width: 2px;
+
+        i {
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+

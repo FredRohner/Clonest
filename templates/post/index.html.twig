@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('post_index') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container row mx-auto">
+        {% for post in posts %}
+            <div class="col-6 col-md-4 col-lg-3 p-2">
+                <div class="card-container">
+                    <div class="option-container">
+                        <a href="#" class="btn btn-light rounded-circle shadow">
+                            <i class="fas fa-thumbtack fa-lg"></i>
+                        </a>
+                        <a href="{{ path('post_show', {'slug': post.slug}) }}" class="btn btn-light rounded-circle shadow">
+                            <i class="fas fa-comments fa-lg"></i>
+                        </a>
+                    </div>
+                    <img src="{{ post.url }}" alt="{{ post.title }}" class="shadow">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('post_index') }}
+{% endblock %}

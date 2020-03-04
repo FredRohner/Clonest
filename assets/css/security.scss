@@ -1,0 +1,33 @@
+.security-form-container {
+  min-height: 100vh;
+
+  form {
+    height: fit-content;
+
+    .form-control {
+      margin-bottom: 1rem;
+    }
+
+    i {
+      width: 1rem;
+    }
+  }
+}
+
+#clone-trooper {
+  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+#toggle-password-button {
+  margin-bottom: 1rem;
+  border-top-right-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #495057;
+
+  &:hover {
+    background-color: #f3f4f5;
+  }
+}
+

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('user_index') }}
+    {{ encore_entry_link_tags('post_index') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mx-0 user-info justify-content-center">
+            <div class="col-12 col-md-8 p-0">
+                <h1 class="h5">{{ app.user.email }}</h1>
+                <a href="{{ path('post_add') }}" class="btn btn-light rounded-circle shadow ">
+                    <i class="fas fa-plus fa-lg"></i>
+                </a>
+            </div>
+            <div class="col-8 col-md-2">
+                <img src="{{ asset('resource/default_280.png') }}" alt="profile picture">
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center m-0">
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary">Your post</button>
+            <button type="button" class="btn btn-primary">Post saved</button>
+        </div>
+    </div>
+
+    <div class="container row mx-auto">
+        {% for post in posts %}
+            <div class="col-6 col-md-4 col-lg-3 p-2">
+                <div class="card-container">
+                    <div class="option-container">
+                        <a href="{{ path('post_delete', {'id': post.id}) }}" class="btn btn-danger rounded-circle shadow ">
+                            <i class="fas fa-trash fa-lg"></i>
+                        </a>
+                        <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-success rounded-circle shadow">
+                            <i class="fas fa-pen fa-lg"></i>
+                        </a>
+                        <a href="{{ path('post_show', {'slug': post.slug}) }}" class="btn btn-light rounded-circle shadow">
+                            <i class="fas fa-comments fa-lg"></i>
+                        </a>
+                    </div>
+                    <img src="{{ post.url }}" alt="{{ post.title }}" class="shadow">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('user_index') }}
+    {{ encore_entry_script_tags('post_index') }}
+{% endblock %}

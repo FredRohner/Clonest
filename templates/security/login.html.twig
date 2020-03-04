@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('security') }}
+{% endblock %}
+
+{% block body %}
+    <div class="security-form-container d-flex justify-content-center">
+        <form method="post" class="shadow rounded p-5 m-auto">
+
+            <div class="d-flex">
+                <img src="{{ asset('resource/clone-trooper_icon.png') }}" id="clone-trooper" class="mx-auto"
+                     height="125" alt="clone-trooper icon">
+            </div>
+
+            <h1 class="text-center">Connection</h1>
+
+            <label for="security_form_email" class="sr-only">Email</label>
+            <input type="email" value="{{ last_username }}" class="form-control {% if error %} is-invalid {% endif %}"
+                   name="email" id="security_form_email" placeholder="Email" required autofocus>
+
+            <label for="security_form_password" class="sr-only">Password</label>
+            <div class="input-group">
+                <input type="password" name="password" id="security_form_password" placeholder="Password" required
+                       class="form-control {% if error %} is-invalid {% endif %}">
+
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="toggle-password-button"
+                            data-toggle="#security_form_password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
+
+            <p class="small">Need to register ? <a href="{{ path('app_register') }}">click here</a></p>
+
+            <button class="btn btn-primary" type="submit">Sign in</button>
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('security') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('post_show') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row shadow m-0">
+            <div class="col-12 col-md-6 p-0 post-container">
+                <div class="option-container">
+                    {% if app.user == post.user %}
+                        <a href="{{ path('post_delete', {'id': post.id}) }}" class="btn btn-danger rounded-circle shadow mb-2">
+                            <i class="fas fa-trash fa-lg"></i>
+                        </a>
+                        <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-success rounded-circle shadow mb-2">
+                            <i class="fas fa-pen fa-lg"></i>
+                        </a>
+                    {% endif %}
+                    <a href="#" class="btn btn-outline-light rounded-circle shadow">
+                        <i class="fas fa-thumbtack fa-lg"></i>
+                    </a>
+                </div>
+                <img src="{{ asset(post.url) }}" alt="{{ post.title }}" class="shadow">
+            </div>
+            <div class="col-12 col-md-6">
+                <h1 class="h2">{{ post.title }}</h1>
+                <p class="small">Posted by <span class="font-weight-bold">{{ post.user.email }}</span></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('post_show') }}
+{% endblock %}
+
+

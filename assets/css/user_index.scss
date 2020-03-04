@@ -1,0 +1,25 @@
+.user-info {
+  padding: 1rem;
+
+  @media (max-width: 767px) {
+    h1 {
+      text-align: center;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  a {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+
+    i {
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('security') }}
+{% endblock %}
+
+{% block body %}
+    <div class="security-form-container d-flex justify-content-center">
+        {{ form_start(form, {'attr': {'class': 'shadow rounded p-5 m-auto'}}) }}
+
+        <div class="d-flex">
+            <img src="{{ asset('resource/clone-trooper_icon.png') }}" height="125" class="mx-auto" id="clone-trooper"
+                 alt="clone-trooper icon">
+        </div>
+
+        <h1 class="text-center">Registration</h1>
+
+        {{ form_label(form.email, 'Email',  {'label_attr': {'class': 'sr-only'}}) }}
+        {{ form_widget(form.email, {'attr': {'autofocus': 'true', 'placeholder': 'Email'}}) }}
+
+        {{ form_label(form.password, 'Password',  {'label_attr': {'class': 'sr-only'}}) }}
+        <div class="input-group">
+            {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" id="toggle-password-button"
+                        data-toggle="#security_form_password">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <p class="small">You already have an account ? <a href="{{ path('app_login') }}">click here</a></p>
+
+        <button class="btn btn-primary">Register</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('security') }}
+{% endblock %}
